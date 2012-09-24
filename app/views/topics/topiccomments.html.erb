@@ -1,0 +1,15 @@
+<div>
+<% @topics.each do |topic| %>
+<p>topic title</p><%= topic.name %></br>
+<%= topic.topic_content %>
+<% end %>
+</div>
+<div>
+<% @comments.each do |comment| %>
+<%= comment.username %>
+<%= comment.comment %>
+<% end %>
+</div>
+
+<div>
+</div>

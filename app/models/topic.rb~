@@ -1,0 +1,5 @@
+class Topic < ActiveRecord::Base
+  attr_accessible :formum_id, :topic_content, :topic_name
+belongs_to:forum
+has_many:comments
+end
