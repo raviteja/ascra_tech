@@ -1,23 +1,72 @@
+<%= form_for(@comment, :remote => true) do |f| %>
+
 <div class='tags'>
  <% tag_cloud Topic.tag_counts, %[s,m,l]  do |tag, css_class| %>
  <%= link_to tag.name, tag_path(tag.name), class: css_class %>
  <% end %>
 </div>
 
+<div class='tags'>
+ <% tag_cloud Comment.tag_counts, %[s,m,l]  do |tag, css_class| %>
+ <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+ <% end %>
+</div>
+<h3>Topic</h3>
 <div>
 
-<p>topic title</p><%= @topics.topic_name %></br>
+<p>topic title: <%= @topics.topic_name %></p>
 <%= @topics.topic_content %>
 <p>Tags:&nbsp<%= raw @topics.tag_list.map {|t| link_to t, tag_path(t)}.join(', ') %></p>
 </p>
 </div>
+<h3>Comments</h3>
 <div>
 <% @comments.each do |comment| %>
-<%= comment.username %>
-<%= comment.comment %>
+<p>by: <%= comment.useremail %></p>
+<div><%= comment.comment %></div>
+<p>Tags:&nbsp<%= raw comment.tag_list.map {|t| link_to t, tag_path(t)}.join(', ') %></p>
 <% end %>
 </div>
 
+
+
+
+<h3>post comment</h3>
 <div>
 
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user %><br />
+    <%= f.text_field :useremail, :value => current_user.email  %>
+  </div>
+  <div class="field">
+    <%= f.label :topic_name %><br />
+    <%= f.collection_select :topic_id, Topic.all, :id, :topic_name, :value => @topics.topic_name %>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment %>
+  </div>
+  <div class="field">
+    <%= f.label :tag_list, "Tags" %><br />
+    <%= f.text_field :tag_list %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+
 </div>
+
+<% end %>

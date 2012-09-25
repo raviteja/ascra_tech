@@ -11,6 +11,7 @@ class TopicsController < ApplicationController
   @topics=Topic.find(params[:id])
   print @topics
   @comments=@topics.comments
+  @comment=Comment.new
   end
 
   def index
@@ -43,7 +44,7 @@ class TopicsController < ApplicationController
     @topic = Topic.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @topic }
     end
   end
