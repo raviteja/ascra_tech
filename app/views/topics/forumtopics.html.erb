@@ -1,6 +1,12 @@
 <div>
+  <h3>Topic List</h3>
 <% @forum_topics.each do |topic| %>
 <%= topic.topic_name %>
+&nbsp&nbsp<%= topic.topic_content %>
 <%= link_to 'explore', topiccomments_topic_path(topic) %></br>
 <% end %>
+</div>
+<div>
+<h3>Create Topic</h3>
+<%= render 'form' %>
 </div>

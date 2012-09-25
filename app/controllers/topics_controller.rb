@@ -5,6 +5,7 @@ class TopicsController < ApplicationController
   def forumtopics
     @forum=Forum.find(params[:id])
     @forum_topics=@forum.topics
+    @topic=Topic.new
   end
 
   def topiccomments
