@@ -1,8 +1,15 @@
+<div class='tags'>
+ <% tag_cloud Topic.tag_counts, %[s,m,l]  do |tag, css_class| %>
+ <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+ <% end %>
+</div>
+
 <div>
-<% @topics.each do |topic| %>
-<p>topic title</p><%= topic.name %></br>
-<%= topic.topic_content %>
-<% end %>
+
+<p>topic title</p><%= @topics.topic_name %></br>
+<%= @topics.topic_content %>
+<p>Tags:&nbsp<%= raw @topics.tag_list.map {|t| link_to t, tag_path(t)}.join(', ') %></p>
+</p>
 </div>
 <div>
 <% @comments.each do |comment| %>
@@ -12,4 +19,5 @@
 </div>
 
 <div>
+
 </div>

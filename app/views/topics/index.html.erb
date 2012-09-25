@@ -1,24 +1,21 @@
 <h1>Listing topics</h1>
 
-<table>
-  <tr>
-    <th>Forum</th>
-    <th>Topic name</th>
-    <th>Topic content</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class='tags'>
+ <% tag_cloud Topic.tag_counts, %[s,m,l]  do |tag, css_class| %>
+ <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+ <% end %>
+</div>
 
 <% @topics.each do |topic| %>
-  <tr>
-    <td><%= topic.forum_id %></td>
-    <td><%= topic.topic_name %></td>
-    <td><%= topic.topic_content %></td>
-    <td><%= link_to 'Show', topic %></td>
-    <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-    <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<div>
+  <p><b><%= topic.topic_name %></b></p>
+  <p><%= topic.topic_content %></p>
+  <p><%= link_to 'Show', topic %>
+  <%= link_to 'Edit', edit_topic_path(topic) %>
+  <%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+
+  <p>Tags:&nbsp<%= raw topic.tag_list.map {|t| link_to t, tag_path(t)}.join(', ') %></p>
+</div>
 <% end %>
 </table>
 

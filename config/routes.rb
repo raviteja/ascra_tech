@@ -1,6 +1,7 @@
 Testpro::Application.routes.draw do
 
 root :to => 'forums#index'
+get 'tags/:tag', to: 'topics#index', as: :tag
  resources :comments
  resources :topics do
 

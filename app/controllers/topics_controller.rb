@@ -9,16 +9,21 @@ class TopicsController < ApplicationController
 
   def topiccomments
   @topics=Topic.find(params[:id])
+  print @topics
   @comments=@topics.comments
   end
 
   def index
+   if params[:tag]
+    @topics=Topic.tagged_with(params[:tag] )
+   else
     @topics = Topic.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @topics }
     end
+  end
   end
 
   # GET /topics/1
