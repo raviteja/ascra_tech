@@ -1,13 +1,16 @@
 <h1>Listing comments</h1>
 
+<div id="tag">
 <div class='tags'>
  <% tag_cloud Comment.tag_counts, %[s,m,l]  do |tag, css_class| %>
  <%= link_to tag.name, tag_path(tag.name), class: css_class %>
  <% end %>
 </div>
+</div>
 
 
 <% @comments.each do |comment| %>
+<div id="comment">
     <p><b>User:</b> <%= comment.useremail %></p>
     <p><b>topic_id:</b> <%= comment.topic_id %></p>
     <p><b>comment:</b> <%= comment.comment %></p>
@@ -16,11 +19,11 @@
     <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 
  <p>Tags:&nbsp<%= raw comment.tag_list.map {|t| link_to t, tag_path(t)}.join(', ') %></p>
-
+</div>
 <% end %>
 
 
 
 <br />
 
-<%= link_to 'New Comment', new_comment_path %>
+<%= link_to 'New Comment', new_comment_path,  :class => "link"%>

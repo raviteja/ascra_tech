@@ -11,3 +11,29 @@
  *= require_self
  *= require_tree .
  */
+#sign_in{
+  width: 80em;
+  height:2em;
+  text-align: right;
+
+  color: #B8F5EF;
+}
+
+#yeild{
+  margin-left: 14em;
+  margin-top: 3em;
+  margin-bottom:5em;
+}
+
+#title{
+text-align:center;
+color:#5AC5E8;
+}
+
+#footer{
+  text-align:center;
+  color: #5AC5E8;
+}
+
+
+

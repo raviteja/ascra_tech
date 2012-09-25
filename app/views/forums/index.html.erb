@@ -1,21 +1,27 @@
 <h1>Listing forums</h1>
 
-
-
+<table class="table">
+<tr>
+  <th>name</th>
+  <th>topics.count</th>
+  <th>description</th>
+  <th></th>
+  <th>topics</th>
+</tr>
 <% @forums.each do |forum| %>
+<tr>
+  <td>  <%= forum.name %> </td>
+  <td>  <%= forum.topics.count %> </td>
+  <td>  <%= forum.description %></td>
+  <td>  <%= link_to 'Show', forum %>
+        <%= link_to 'Edit', edit_forum_path(forum) %>
+        <%= link_to 'Destroy', forum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
-    <p><%= forum.name %>
-    <%= forum.topics.count %> topics
-    <%= forum.description %></p></br>
-    <p><%= link_to 'Show', forum %>
-    <%= link_to 'Edit', edit_forum_path(forum) %>
-    <%= link_to 'Destroy', forum, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-
-    <p><%= link_to 'forumtopics',forumtopics_topic_path(forum)  %></p>
-
+    <td><%= link_to 'forumtopics',forumtopics_topic_path(forum)  %></td>
+</tr>
 <% end %>
 
-
+</table>
 <br />
 
 <%= link_to 'New Forum', new_forum_path %>

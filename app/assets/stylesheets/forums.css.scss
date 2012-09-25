@@ -1,3 +1,26 @@
 // Place all the styles related to the forums controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.table{
+  padding:15px;
+  cellspacing:10px;
+  width:50em;
+}
+
+#heading{
+  margin-bottom:30px;
+}
+
+.comment{
+border:1px solid #D7F7EA;
+width:50em;
+}
+
+#tag{
+  float:right;
+
+  margin-right:11em;
+}
+
+

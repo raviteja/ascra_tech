@@ -2,9 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .tags{
-width: 400px;
+width: 100px;
 .s { font-size:0.8em;}
 .m { font-size:1.2em;}
 .l { font-size:1.4em;}
 
+}
+
+#tag{
+  float:right;
+
+  margin-right:11em;
+}
+
+#comment{
+width:50em;
+border: 1px solid #A3F7AE;
+}
+
+.link{
+
+  border: 1px solid blue;
+  border-radius:5px;
 }
